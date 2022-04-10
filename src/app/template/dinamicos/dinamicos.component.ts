@@ -27,4 +27,8 @@ export class DinamicosComponent {
   guardar() {
     console.log('guardar');
   }
+
+  eliminar(index: number) {
+    this.persona.favoritos.splice(index, 1);
+  }
 }
