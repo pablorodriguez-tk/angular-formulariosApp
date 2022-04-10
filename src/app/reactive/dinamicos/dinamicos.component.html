@@ -26,10 +26,15 @@
       <div class="input-group mb-3">
         <input
           class="form-control"
+          [formControl]="nuevoFavorito"
           placeholder="Agregar favorito"
-          (keyup.enter)="(1)"
+          (keyup.enter)="agregarFavorito()"
         />
-        <button class="btn btn-outline-primary" (click)="(1)" type="button">
+        <button
+          class="btn btn-outline-primary"
+          (click)="agregarFavorito()"
+          type="button"
+        >
           Agregar
         </button>
       </div>
@@ -63,6 +68,8 @@
 <br />
 <span>Value</span>
 <pre>{{ miFormulario.value | json }}</pre>
+<br />
+<span>Agregar juego</span>
+<pre>{{ nuevoFavorito.valid }}</pre>
 
-<!-- <span>Persona</span>
-<pre>{{ persona | json }}</pre> -->
+<pre>{{ nuevoFavorito.value }}</pre>
