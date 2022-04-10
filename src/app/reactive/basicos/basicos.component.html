@@ -1,7 +1,7 @@
 <h2>Reactivos: Basicos</h2>
 <div class="row">
   <div class="col">
-    <form [formGroup]="miFormulario" autocomplete="off">
+    <form (ngSubmit)="guardar()" [formGroup]="miFormulario" autocomplete="off">
       <!-- campo de producto -->
       <div class="mb-3 row">
         <label class="col-sm-3 col-form-label">Producto</label>
@@ -53,11 +53,7 @@
       </div>
       <div class="row">
         <div class="col">
-          <button
-            type="submit"
-            class="btn btn-primary float-end"
-            [disabled]="miFormulario.invalid"
-          >
+          <button type="submit" class="btn btn-primary float-end">
             Guardar
           </button>
         </div>
