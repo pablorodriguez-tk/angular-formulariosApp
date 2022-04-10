@@ -1,7 +1,7 @@
 <h2>Reactivos: Switches</h2>
 <hr />
 
-<form>
+<form [formGroup]="miFormulario">
   <!-- Radio -->
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Genero</label>
@@ -11,8 +11,8 @@
           class="form-check-input"
           type="radio"
           value="M"
-          name="radioGenero"
           id="radioMasculino"
+          formControlName="genero"
         />
         <label class="form-check-label" for="radioMasculino"> Masculino </label>
       </div>
@@ -21,9 +21,9 @@
           class="form-check-input"
           type="radio"
           value="F"
-          name="radioGenero"
           id="radioFemenino"
           checked
+          formControlName="genero"
         />
         <label class="form-check-label" for="radioFemenino"> Femenino </label>
       </div>
@@ -41,6 +41,7 @@
           role="switch"
           id="flexSwitchCheckChecked"
           checked
+          formControlName="notificaciones"
         />
         <label class="form-check-label" for="flexSwitchCheckChecked"
           >Quiero recibir notificaciones</label
@@ -54,7 +55,12 @@
     <label class="col-sm-3 col-form-label"></label>
     <div class="col-sm-9">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="flexCheckDefault" />
+        <input
+          formControlName="condiciones"
+          class="form-check-input"
+          type="checkbox"
+          id="flexCheckDefault"
+        />
         <label class="form-check-label" for="flexCheckDefault">
           Terminos y condiciones de uso
         </label>
@@ -70,7 +76,7 @@
   </div>
 </form>
 
-<!-- <h4>Valor del formulario</h4>
+<h4>Valor del formulario</h4>
 <pre>{{ miFormulario.value | json }}</pre>
 <br />
 
@@ -81,8 +87,8 @@
 <h5>Valid</h5>
 <pre>{{ miFormulario.valid }}</pre>
 
-<h5>Terminos</h5>
-<pre>{{ miFormulario.form.controls["terminos"].errors | json }}</pre>
+<!-- <h5>Terminos</h5>
+<pre>{{ miFormulario.controls["terminos"].errors | json }}</pre>
 
 <br />
 <pre>Condiciones: </pre> -->
