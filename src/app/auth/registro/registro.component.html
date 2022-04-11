@@ -3,7 +3,11 @@
 
 <div class="row">
   <div class="col">
-    <form>
+    <form
+      autocomplete="off"
+      [formGroup]="miFormulario"
+      (submit)="submitFormulario()"
+    >
       <!-- Nombre -->
       <div class="row mb-3">
         <label class="col-sm-3 col-form-label">Nombre</label>
@@ -12,8 +16,9 @@
             type="text"
             class="form-control"
             placeholder="Nombre del usuario"
+            formControlName="nombre"
           />
-          <span class="form-text text-danger"
+          <span class="form-text text-danger" *ngIf="campoNoValido('nombre')"
             >Debe de ser en formato de nombre y apellido</span
           >
         </div>
@@ -26,6 +31,7 @@
             type="email"
             class="form-control"
             placeholder="Email del usuario"
+            formControlName="email"
           />
         </div>
       </div>
@@ -37,6 +43,7 @@
             type="text"
             class="form-control"
             placeholder="Codigo del usuario"
+            formControlName="username"
           />
         </div>
       </div>
@@ -48,6 +55,7 @@
             type="password"
             class="form-control"
             placeholder="Password de su cuenta"
+            formControlName="password"
           />
         </div>
       </div>
@@ -59,14 +67,19 @@
             type="password"
             class="form-control"
             placeholder="Confirmar la contraseña"
+            formControlName="password2"
           />
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <button class="btn btn-primary float-end">Crear</button>
+          <button class="btn btn-primary float-end" type="submit">Crear</button>
         </div>
       </div>
     </form>
   </div>
 </div>
+
+<h2>Form Valid: {{ miFormulario.valid }}</h2>
+<h5>Nombre</h5>
+<pre> {{ miFormulario.controls["nombre"].errors | json }}</pre>
