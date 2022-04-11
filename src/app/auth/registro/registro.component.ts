@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -6,22 +6,29 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: './registro.component.html',
   styles: [],
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
   //TODO: Temporal
   nombreApellidoPattern: string = '([a-zA-Z]+) ([a-zA-Z]+)';
-
+  emailPattern: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   miFormulario: FormGroup = this.fb.group({
     nombre: [
       '',
       [Validators.required, Validators.pattern(this.nombreApellidoPattern)],
     ],
-    email: [''],
+    email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
     username: [''],
     password: [''],
     password2: [''],
   });
 
   constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.miFormulario.reset({
+      nombre: 'Pablo Rodriguez',
+      email: 'test1@test1.com',
+    });
+  }
 
   campoNoValido(campo: string) {
     return (
